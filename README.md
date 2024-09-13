@@ -14,3 +14,6 @@ et entraînent des **perturbations dans les cycles biologiques et les chaînes a
 - **constater** à l’aide du jeu de données de la NASA que les variations de températures observées à travers le monde sont significativement plus élevées qu’à l’époque préindustrielle (1850-1900)
 - **identifier** quelques paramètres naturels et liés à l’activité humaine permettent d’expliquer les variations observées
 - **analyser** les forces explicatives de ces paramètres dans un modèle descriptif et manipuler ces paramètres pour prédire des variations futures.
+# Qui a fait ce travail ? 
+Sébastien Lagarde-Corrado](https://www.linkedin.com/in/slagardecorrado/)
+Damien Selosse](https://www.linkedin.com/in/damienselosse/)

@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import plotly.graph_objects as go
 # Pour éviter d'avoir les messages warning
 import warnings
 warnings.filterwarnings('ignore')
@@ -778,6 +779,7 @@ if page == sections[4] :
 
 # SERIES TEMPORELLES
 if page == sections[5] :
+
     def prediction_temperature(country):
         # 2. Copier la colonne "YEAR" en "date"
         dataset['date'] = dataset['YEAR']
@@ -790,30 +792,40 @@ if page == sections[5] :
         df_country.set_index('date', inplace=True)
         # 6. Ne garder que quelques colonnes
         df_country = df_country[['YEAR', 'YAVGT', 'Name_EN']]
+
         # 7. Modèle SARIMAX
         model_sarimax = SARIMAX(df_country['YAVGT'], order=(1, 1, 1), seasonal_order=(0, 1, 1, 5))
         sarimax_fit = model_sarimax.fit(disp=False)
         sarimax_forecast = sarimax_fit.get_forecast(steps=10)
         sarimax_pred = sarimax_forecast.predicted_mean
+
         # 7. Modèle Holt-Winters
         model_hw = ExponentialSmoothing(df_country['YAVGT'], trend='mul', seasonal='mul', seasonal_periods=5)
         hw_fit = model_hw.fit()
         hw_forecast = hw_fit.forecast(steps=10)
-        # 8. Afficher le graph
-        # Créer un graphique matplotlib avec vos données
-        fig, ax = plt.subplots(figsize=(14, 7))
-        ax.plot(df_country['YAVGT'], label='Températures Réelles', color='blue')
-        ax.plot(pd.date_range(start=df_country.index[-1] + pd.DateOffset(years=1), periods=10, freq='Y'),
-                sarimax_pred, label='Prévisions SARIMAX', color='orange')
-        ax.plot(pd.date_range(start=df_country.index[-1] + pd.DateOffset(years=1), periods=10, freq='Y'),
-                hw_forecast, label='Prévisions Holt-Winters', color='green')
-        ax.set_title(f'Prévisions de Températures pour {country}')
-        ax.set_xlabel('Année')
-        ax.set_ylabel('Température centième de °C')
-        ax.legend()
-        # Afficher le graphique dans Streamlit en passant l'objet figure à st.pyplot()
-        st.pyplot(fig)
-    
+
+        # Créer un graphique interactif avec Plotly
+        fig = go.Figure()
+
+        # Températures réelles
+        fig.add_trace(go.Scatter(x=df_country.index, y=df_country['YAVGT'], mode='lines', name='Températures Réelles', line=dict(color='blue')))
+
+        # Prévisions SARIMAX
+        future_dates = pd.date_range(start=df_country.index[-1] + pd.DateOffset(years=1), periods=10, freq='Y')
+        fig.add_trace(go.Scatter(x=future_dates, y=sarimax_pred, mode='lines', name='Prévisions SARIMAX', line=dict(color='orange')))
+
+        # Prévisions Holt-Winters
+        fig.add_trace(go.Scatter(x=future_dates, y=hw_forecast, mode='lines', name='Prévisions Holt-Winters', line=dict(color='green')))
+
+        # Mise à jour du layout
+        fig.update_layout(title=f'Prévisions de Températures pour {country}',
+                          xaxis_title='Année',
+                          yaxis_title='Température (°C)',
+                          legend=dict(x=0, y=1))
+
+        # Afficher le graphique dans Streamlit
+        st.plotly_chart(fig)
+
     with st.container():
         st.header(f"{sections[5]}")
         st.markdown("Sélection du modèle et validation par la **RMSE**. D’abord testée sur un pays (la France) puis validées par la moyenne des températures mondiale.")

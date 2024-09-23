@@ -1,13 +1,13 @@
-#import streamlit as st
-#import streamlit.components.v1 as components
-#import pandas as pd
-#import matplotlib.pyplot as plt
-#from statsmodels.tsa.statespace.sarimax import SARIMAX
-#from statsmodels.tsa.holtwinters import ExponentialSmoothing
-#import plotly.graph_objects as go
+import streamlit as st
+import streamlit.components.v1 as components
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from statsmodels.tsa.holtwinters import ExponentialSmoothing
+import plotly.graph_objects as go
 # Pour éviter d'avoir les messages warning
-#import warnings
-#warnings.filterwarnings('ignore')
+import warnings
+warnings.filterwarnings('ignore')
 
 # Chargement des datasets et listes
 dataset = pd.read_csv('./ressources/dataset.csv', sep=";")

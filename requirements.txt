@@ -1,10 +1,9 @@
-pip install statsmodels.tsa.statespace
-pip install statsmodels.tsa.holtwinters
+
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
 import matplotlib.pyplot as plt
-
+statsmodels
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 import plotly.graph_objects as go

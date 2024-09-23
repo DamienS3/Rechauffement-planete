@@ -1,4 +1,5 @@
-pip install statsmodels
+pip install statsmodels.tsa.statespace
+pip install statsmodels.tsa.holtwinters
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd

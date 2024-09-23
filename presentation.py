@@ -7,7 +7,7 @@
 #import plotly.graph_objects as go
 # Pour éviter d'avoir les messages warning
 #import warnings
-warnings.filterwarnings('ignore')
+#warnings.filterwarnings('ignore')
 
 # Chargement des datasets et listes
 dataset = pd.read_csv('./ressources/dataset.csv', sep=";")

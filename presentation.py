@@ -885,14 +885,14 @@ if page == sections[6] :
     st.markdown("Nous vous remerçions pour toute l'aide que vous nous avez apportée durant notre formation, et en particulier **Yohan Cohen** notre tuteur.")
     st.markdown("Nous avons également une pensée particulière pour **Jérémy Bazille** (CHU d'Amiens) qui a été à nos côtés au démarrage du projet ; son évolution professionnelle ne lui ayant pas permis de le poursuivre et le finaliser avec nous.")
     st.divider()
-# Check if the "clap" key exists in session_state
-if "clap" not in st.session_state:
-    st.session_state.clap = False
-
-# Define the function to release the balloons
-def release_the_balloons():
-    st.balloons()
-
-# Use st.button to create a button triggering the release_the_balloons function
-if st.button("Merci de votre attention !", key="clap", type="primary"):
-    release_the_balloons()
+        # Check if the "clap" key exists in session_state
+        if "clap" not in st.session_state:
+            st.session_state.clap = False
+        
+        # Define the function to release the balloons
+        def release_the_balloons():
+            st.balloons()
+        
+        # Use st.button to create a button triggering the release_the_balloons function
+        if st.button("Merci de votre attention !", key="clap", type="primary"):
+            release_the_balloons()

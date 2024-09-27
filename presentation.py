@@ -17,7 +17,7 @@ continents_list = dataset['Continent_EN'].unique()
 countries_list = dataset['Name_EN'].unique()
 
 # Page config
-st.set_page_config(page_title="Présentation SLC&DS", layout="wide")
+st.set_page_config(page_title="Rechauffement Planete - Sébastien Lagarde-Corrado et Damien Selosse", layout="wide")
 background="https://as1.ftcdn.net/v2/jpg/00/34/75/54/1000_F_34755489_duiIuPfqZNtYgrSGFZAyjg5KyMV2Euai.jpg"
 
 #Sections
@@ -35,6 +35,12 @@ sections=["Introduction",
 #============
 
 with st.sidebar:
+    #Sommaire
+    with st.container(border=True):
+        st.markdown("""
+                    <span style='font-size=xx-large;'><b>Sommaire</b></span>
+                    """, unsafe_allow_html=True)
+        page=st.radio("** **", sections)    
     # Zone d'en-tête
     with st.container(border=True):
         st.image("https://datascientest.com/wp-content/uploads/2022/03/logo-2021.png")
@@ -67,12 +73,6 @@ with st.sidebar:
             with st.popover("🎥  Évolution"):
                 st.video("https://data.giss.nasa.gov/gistemp/animations/TEMPANOMALY_05_2023_pdiff.mp4")
     
-    #Sommaire
-    with st.container(border=True):
-        st.markdown("""
-                    <span style='font-size=xx-large;'><b>Sommaire</b></span>
-                    """, unsafe_allow_html=True)
-        page=st.radio("** **", sections)
 
 #============
 # MAIN PAGE
@@ -885,9 +885,14 @@ if page == sections[6] :
     st.markdown("Nous vous remerçions pour toute l'aide que vous nous avez apportée durant notre formation, et en particulier **Yohan Cohen** notre tuteur.")
     st.markdown("Nous avons également une pensée particulière pour **Jérémy Bazille** (CHU d'Amiens) qui a été à nos côtés au démarrage du projet ; son évolution professionnelle ne lui ayant pas permis de le poursuivre et le finaliser avec nous.")
     st.divider()
-    if "clap" not in st.session_state:
-        st.session_state.clap = False
-    def release_the_balloons():
-        st.balloons()
-    st.button("Merci de votre attention ! ", key="clap", type="primary", on_click=release_the_balloons, args=())
-        
+# Check if the "clap" key exists in session_state
+if "clap" not in st.session_state:
+    st.session_state.clap = False
+
+# Define the function to release the balloons
+def release_the_balloons():
+    st.balloons()
+
+# Use st.button to create a button triggering the release_the_balloons function
+if st.button("Merci de votre attention !", key="clap", type="primary"):
+    release_the_balloons()

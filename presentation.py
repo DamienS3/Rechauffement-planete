@@ -827,13 +827,7 @@ if page == sections[5] :
         st.plotly_chart(fig)
 
     with st.container():
-          st.markdown("### Prevision")
-        # Sélection du pays à partir de la liste déroulante
-                selected_country = st.selectbox('Sélectionnez un pays', countries_list)
-        if st.button('Exécuter la prévision'):
-            prediction_temperature(selected_country)
-        #HWMonde = "./ressources/Holt-Winters-MONDE.png"
-        #SARIMAXMonde = "./ressources/SARIMAX-MONDE.png"
+
         st.header(f"{sections[5]}")
         st.markdown("Sélection du modèle et validation par la **RMSE**. D’abord testée sur un pays (la France) puis validées par la moyenne des températures mondiale.")
         st.dataframe(monde.head(5))
@@ -848,7 +842,13 @@ if page == sections[5] :
         st.markdown("#### Avantages et inconvénients pour chaque modèle :")
         st.markdown("- Interprétabilité du SARIMAX (nombreuses valeurs d’évaluation dans result.summary\n- Holt-Winters donne plus d’importance aux toutes dernières valeurs observées dans la série temporelle.")
         st.markdown("Le choix est fait de garder l'exécution de ces deux modèles avec un Trend Multiplicatif et une saisonnalité de 5 ans. En assumant que SARIMAX sous-évalue légèrement et que Holt-Winters surévalue légèrement. C'est un peu comme garder un intervale de confiance de 15% entre les deux prévisions ")
-      
+        st.markdown("### Prevision")
+        # Sélection du pays à partir de la liste déroulante
+                selected_country = st.selectbox('Sélectionnez un pays', countries_list)
+        if st.button('Exécuter la prévision'):
+            prediction_temperature(selected_country)
+        #HWMonde = "./ressources/Holt-Winters-MONDE.png"
+        #SARIMAXMonde = "./ressources/SARIMAX-MONDE.png"   
 
 
 

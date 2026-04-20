@@ -827,7 +827,7 @@ if page == sections[5] :
         st.plotly_chart(fig)
 
     with st.container():
-        st.markdown("### Prevision")
+        st.markdown("## Prevision")
         # Sélection du pays à partir de la liste déroulante
         selected_country = st.selectbox('Sélectionnez un pays', countries_list)
         if st.button('Exécuter la prévision'):

@@ -811,7 +811,7 @@ if page == sections[5] :
         fig.add_trace(go.Scatter(x=df_country.index, y=df_country['YAVGT'], mode='lines', name='Températures Réelles', line=dict(color='blue')))
 
         # Prévisions SARIMAX
-        future_dates = pd.date_range(start=df_country.index[-1] + pd.DateOffset(years=1), periods=10, freq='Y')
+        future_dates = pd.date_range(start=df_country.index[-1] + pd.DateOffset(years=1), periods=10, freq='YE')
         fig.add_trace(go.Scatter(x=future_dates, y=sarimax_pred, mode='lines', name='Prévisions SARIMAX', line=dict(color='orange')))
 
         # Prévisions Holt-Winters

@@ -844,7 +844,7 @@ if page == sections[5] :
         st.markdown("Le choix est fait de garder l'exécution de ces deux modèles avec un Trend Multiplicatif et une saisonnalité de 5 ans. En assumant que SARIMAX sous-évalue légèrement et que Holt-Winters surévalue légèrement. C'est un peu comme garder un intervale de confiance de 15% entre les deux prévisions ")
         st.markdown("### Prevision")
         # Sélection du pays à partir de la liste déroulante
-                selected_country = st.selectbox('Sélectionnez un pays', countries_list)
+        selected_country = st.selectbox('Sélectionnez un pays', countries_list)
         if st.button('Exécuter la prévision'):
             prediction_temperature(selected_country)
         #HWMonde = "./ressources/Holt-Winters-MONDE.png"

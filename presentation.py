@@ -428,9 +428,9 @@ if page == sections[1] :
                     """, unsafe_allow_html=True)
             with cols_analyse_T9[1]:
                 with st.popover("➕"): #Antarctique"):
-                    st.image("./ressources/ANTAR01.png")
-                    st.image("./ressources/ANTAR02.png")
-                    st.image("./ressources/ANTAR03.png")
+                    st.image("./ressources/Antar01.png")
+                    st.image("./ressources/Antar02.png")
+                    st.image("./ressources/Antar03.png")
             st.write("")
 
 

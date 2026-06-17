@@ -251,7 +251,7 @@ Les contributions sont les bienvenues ! Voici comment contribuer :
 | Auteur                        | Rôle         | LinkedIn                                                 |
 | ----------------------------- | ------------ | -------------------------------------------------------- |
 | **Sébastien Lagarde-Corrado** | Data Analyst | [LinkedIn](https://www.linkedin.com/in/slagardecorrado/) |
-| **Damien Selosse**            | Data Analyst | [LinkedIn](https://www.linkedin.com/in/damienselosse/)   |
+| **Damien Selosse**            | PM Data IA | [LinkedIn](https://www.linkedin.com/in/damienselosse/)   |
 
 
 ---
